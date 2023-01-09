@@ -11,7 +11,6 @@ async function travelAllDirectories(directory_name, message) {
                     insertLine(element).contentSync(`//${message}`).at(1)
                     insertLine(element).appendSync(`//${message}`)
                 } else {
-                    console.log("else", element);
                     travelAllDirectories(element, message);
                 }
             });
