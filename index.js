@@ -1,25 +1,37 @@
 exports.helloFunction = (your_name) => {
     console.log(`Hello ${your_name}. How are you.`);
 }
-const fs = require('fs');
-const path = require('path');
-const directoryPath = path.join(__dirname, 'Documents');
-console.log(directoryPath);
-console.log(__dirname);
-// const inquirer = require('inquirer');
-// const globle_input = async () => {
-//     const email_input = await inquirer
-//         .prompt([
-//             {
-//                 type: 'text',
-//                 name: 'path',
-//                 message: 'Enter the path of your project/files:',
-//             },
-//         ])
-//     console.log(email_input);
-// }
-// async function CreateSuperUser() {
-//     await globle_input();
-// };
 
-// CreateSuperUser();
+async function travelAllDirectories(directory_name) {
+    await getDirectories('directory_name', function (err, res) {
+        if (err) {
+            console.log('Error', err);
+        } else {
+            console.log(res,"responseioooooooooooooooooo----");
+        }
+    });
+}
+
+const glob = require("glob");
+
+let getDirectories = async function (src, callback) {
+    glob(src + '/**/*', callback);
+};
+
+const inquirer = require('inquirer');
+const directoryName = async () => {
+    const email_input = await inquirer
+        .prompt([
+            {
+                type: 'text',
+                name: 'path',
+                message: 'Enter the path of your project/files:',
+            },
+        ])
+    await travelAllDirectories(email_input)
+}
+async function AddWaterMark() {
+    await directoryName();
+};
+
+AddWaterMark();

@@ -1,6 +1,6 @@
 {
   "name": "scripts-and-utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This module is build for dynamic scripts commands for performing operations using command line.",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/TusharCitrusbug/scripts-and-utils#readme",
   "dependencies": {
+    "glob": "^8.0.3",
     "inquirer": "^8.2.5"
   }
 }
