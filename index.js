@@ -1,52 +1,26 @@
-// const glob = require("glob");
-// const inquirer = require('inquirer');
-// const insertLine = require('insert-line')
-// async function travelAllDirectories(directory_name, message) {
-//     await getDirectories(directory_name, function (err, res) {
-//         if (err) {
-//             console.log('Error', err);
-//         } else {
-//             res.forEach(element => {
-//                 if (element.includes(".js") || element.includes(".ts")) {
-//                     insertLine(element).contentSync(`//${message}`).at(1)
-//                     insertLine(element).appendSync(`//${message}`)
-//                 } else {
-//                     console.log("else", element);
-//                     travelAllDirectories(element, message);
-//                 }
-//             });
-//         }
-//     });
-// }
+const add_water_mark = require('./dist/scripts/add_watermark')
+const inquirer = require('inquirer');
 
-// let getDirectories = async function (src, callback) {
-//     glob(src + '/**/*', callback);
-// };
+const PerformCommands = async () => {
+    const answer = await inquirer
+        .prompt([
+            {
+                type: 'rawlist',
+                name: 'reptile',
+                message: 'Which do you want to perform?',
+                choices: ['add water mark', "abc", "xyz", "zxy"]
+            },
+        ])
+    if (answer.reptile === 'add water mark') {
+        await add_water_mark.AddWaterMark();
+    } else if (answer.reptile === 'abc') {
+        console.log("command process is not applied yet!");
 
-// const directoryName = async () => {
-//     const dir_path = await inquirer
-//         .prompt([
-//             {
-//                 type: 'text',
-//                 name: 'path',
-//                 message: 'Enter the path of your project/files:',
-//             },
-//         ])
-//     const message = await inquirer
-//         .prompt([
-//             {
-//                 type: 'text',
-//                 name: 'message',
-//                 message: 'Enter the message you want to watermark:',
-//             },
-//         ])
-//         await travelAllDirectories(dir_path.path, message.message)
-//     }
-//     async function AddWaterMark() {
-//         await directoryName();
-//         console.log("watermark added successfully!");
-// };
+    } else if (answer.reptile === 'xyz') {
+        console.log("command process is not applied yet!");
+    } else if (answer.reptile === 'zxy') {
+        console.log("command process is not applied yet!");
+    }
+}
 
-// AddWaterMark();
-
-require('./dist/scripts/add_watermark')
+PerformCommands();

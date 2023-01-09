@@ -1,6 +1,6 @@
 {
   "name": "scripts-and-utils",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "This module is build for dynamic scripts commands for performing operations using command line.",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
   "dependencies": {
     "glob": "^8.0.3",
     "inquirer": "^8.2.5",
-    "insert-line": "^1.1.0"
+    "insert-line": "^1.1.0",
+    "scripts-and-utils": "^1.0.6"
   }
 }

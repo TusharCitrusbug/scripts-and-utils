@@ -40,11 +40,10 @@ const directoryName = async () => {
                 message: 'Enter the message you want to watermark:',
             },
         ])
-        await travelAllDirectories(dir_path.path, message.message)
-    }
-    async function AddWaterMark() {
-        await directoryName();
-        console.log("watermark added successfully!");
-};
+    await travelAllDirectories(dir_path.path, message.message)
+}
 
-AddWaterMark();
+exports.AddWaterMark = async () => {
+    await directoryName();
+    console.log("watermark added successfully!");
+};
