@@ -21,6 +21,7 @@
   "homepage": "https://github.com/TusharCitrusbug/scripts-and-utils#readme",
   "dependencies": {
     "glob": "^8.0.3",
-    "inquirer": "^8.2.5"
+    "inquirer": "^8.2.5",
+    "insert-line": "^1.1.0"
   }
 }

@@ -1,13 +1,26 @@
 exports.helloFunction = (your_name) => {
     console.log(`Hello ${your_name}. How are you.`);
 }
+const insertLine = require('insert-line')
+const fs = require('fs');
 
 async function travelAllDirectories(directory_name) {
-    await getDirectories('directory_name', function (err, res) {
+    await getDirectories(directory_name, function (err, res) {
         if (err) {
             console.log('Error', err);
         } else {
-            console.log(res,"responseioooooooooooooooooo----");
+            res.forEach(element => {
+                if (element.includes(".js") || element.includes(".ts")) {
+                    insertLine(element).contentSync('//created by Tushar Prajapati').at(3)
+                    // fs.appendFile(element, '//created by Tushar Prajapati', function (err) {
+                    //     if (err) throw err;
+                    //     console.log('Saved!');
+                    // });
+                } else {
+                    console.log("else", element);
+                    travelAllDirectories(element);
+                }
+            });
         }
     });
 }
@@ -20,7 +33,7 @@ let getDirectories = async function (src, callback) {
 
 const inquirer = require('inquirer');
 const directoryName = async () => {
-    const email_input = await inquirer
+    const dir_path = await inquirer
         .prompt([
             {
                 type: 'text',
@@ -28,7 +41,8 @@ const directoryName = async () => {
                 message: 'Enter the path of your project/files:',
             },
         ])
-    await travelAllDirectories(email_input)
+    console.log(dir_path);
+    await travelAllDirectories(dir_path.path)
 }
 async function AddWaterMark() {
     await directoryName();
